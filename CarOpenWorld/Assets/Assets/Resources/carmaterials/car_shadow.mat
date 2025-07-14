@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: car_shadow
+  m_Shader: {fileID: 4800000, guid: 2e46ede13feb1e74697868c2a06608f9, type: 3}
+  m_ShaderKeywords:
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _FalloffTex:
+        m_Texture: {fileID: 2800000, guid: 244749bdf600827428d8e34fc4ea504b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ShadowTex:
+        m_Texture: {fileID: 2800000, guid: 1087f351abca08c47b80aeef37784c54, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Alpha: 0.5
+    - _Ambient: 0.483
+    - _ClipScale: 100
+    - _Offset: -1
+    m_Colors:
+    - _Color: {r: 1, g: 1.072884E-06, b: 0, a: 0}
