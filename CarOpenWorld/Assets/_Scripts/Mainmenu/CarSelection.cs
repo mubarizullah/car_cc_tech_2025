@@ -121,8 +121,12 @@ public class CarSelection : MonoBehaviour
         // Save selected car index
         PlayerPrefs.SetInt(PlayerPrefsKeys.SelectedCarIndex, currentCarIndex);
         PlayerPrefs.Save();
-        PlayerManager.Instance.selectedCarIndex = currentCarIndex;
 
+        if (PlayerManager.Instance)
+        {
+            PlayerManager.Instance.selectedCarIndex = currentCarIndex;
+        }
+        
         garagePanel.SetActive(false);
         DestroyCurrentCar();
         levelPanel.SetActive(true);
