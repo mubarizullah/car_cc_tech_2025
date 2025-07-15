@@ -1120,7 +1120,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1388,7 +1388,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4778,7 +4778,6 @@ GameObject:
   m_Component:
   - component: {fileID: 575697737}
   - component: {fileID: 575697738}
-  - component: {fileID: 575697739}
   m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
@@ -4814,21 +4813,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575697736}
   m_CullTransparentMesh: 1
---- !u!114 &575697739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575697736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be6dd540857cfc04aba67351cb71358f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filler: {fileID: 1414856209}
-  percentText: {fileID: 1192542061}
-  sceneIndex: 2
 --- !u!1 &607613245
 GameObject:
   m_ObjectHideFlags: 0
@@ -7500,7 +7484,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.25
+  m_fontSize: 21.45
   m_fontSizeBase: 37.9
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7607,7 +7591,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.35
+  m_fontSize: 21.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10887,7 +10871,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
+  m_fontSize: 23.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13467,6 +13451,7 @@ GameObject:
   - component: {fileID: 1566403516}
   - component: {fileID: 1566403517}
   - component: {fileID: 1566403518}
+  - component: {fileID: 1566403519}
   m_Layer: 5
   m_Name: LevelPanel
   m_TagString: Untagged
@@ -13520,8 +13505,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d100a3ff199e55c4c9732ddd346387d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelStartButton: {fileID: 1619677711}
+  noTrafficMode: {fileID: 1619677711}
+  trafficMode: {fileID: 1726148329}
+  stuntMode: {fileID: 1942391079}
   loadingScreen: {fileID: 575697736}
+--- !u!114 &1566403519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566403515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be6dd540857cfc04aba67351cb71358f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filler: {fileID: 1414856209}
+  percentText: {fileID: 1192542061}
 --- !u!1 &1569628891
 GameObject:
   m_ObjectHideFlags: 0
@@ -18776,7 +18777,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

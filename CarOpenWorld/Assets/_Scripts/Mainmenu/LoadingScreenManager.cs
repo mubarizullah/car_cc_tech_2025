@@ -8,15 +8,26 @@ public class LoadingScreenManager : MonoBehaviour
 {
     public Image filler;
     public TextMeshProUGUI percentText;
-    public int sceneIndex;
+    int sceneIndex;
 
-    private void OnEnable()
+    private void Start()
     {
-        // Wait one frame before starting actual loading
-        StartCoroutine(DelayAndStartLoading());
+        LevelHandler.OnModeClicked += SetSceneIndex;
+    }
+    private void OnDestroy()
+    {
+        LevelHandler.OnModeClicked -= SetSceneIndex;
     }
 
-    IEnumerator DelayAndStartLoading()
+    void SetSceneIndex(int n)
+    {
+        sceneIndex = n;
+        StartCoroutine(DelayAndStartLoading(sceneIndex));
+    }
+
+
+
+    IEnumerator DelayAndStartLoading(int sceneIndex)
     {
         // Allow UI to render first
         yield return null;
@@ -45,4 +56,6 @@ public class LoadingScreenManager : MonoBehaviour
             yield return null;
         }
     }
+
+    
 }
