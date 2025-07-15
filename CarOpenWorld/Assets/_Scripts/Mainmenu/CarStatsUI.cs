@@ -18,10 +18,10 @@ public class CarStatsUI : MonoBehaviour
         carNameText.text = car.CarName;
         carLogo.sprite = car.carLogo;
         priceText.text = car.carPrice == 0 ? "Free" : car.carPrice.ToString();
-        powerText.text = car.power.ToString("F1");
-        topSpeedText.text = car.topSpeed.ToString("F1");
-        weightText.text = car.weightInKg.ToString("F0");
-        brakingText.text = car.brakingForce.ToString("F1");
+        powerText.text = car.power.ToString();
+        topSpeedText.text = car.topSpeed.ToString();
+        weightText.text = car.weightInKg.ToString();
+        brakingText.text = car.brakingForce.ToString();
         adsToUnlockText.text =  car.adsToUnlock.ToString();
     }
 }
