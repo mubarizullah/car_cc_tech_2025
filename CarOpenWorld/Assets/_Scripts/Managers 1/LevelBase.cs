@@ -44,15 +44,7 @@ public abstract class LevelBase : MonoBehaviour
         GameObject car = GameObject.FindGameObjectWithTag("Player");
         if (car != null && car.activeInHierarchy)
         {
-            // Disable it
-            car.SetActive(false);
-
-            // Move and rotate to reference point
             car.transform.position = carPosRotRef.position;
-            car.transform.rotation = carPosRotRef.rotation;
-
-            // Enable it again
-            car.SetActive(true);
         }
         else
         {
