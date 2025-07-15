@@ -9,6 +9,7 @@ public abstract class LevelBase : MonoBehaviour
     protected int currentPoints = 0;
     
     public GameObject[] objectsToEnable;
+    public GameObject[] objectsToDisable;
 
 
     private void OnEnable()
@@ -32,10 +33,25 @@ public abstract class LevelBase : MonoBehaviour
     void AtLevelStart()
     {
         // Enable required objects
-        foreach (GameObject obj in objectsToEnable)
+        if (objectsToEnable != null)
         {
-            obj.SetActive(true);
+            
+            foreach (GameObject obj in objectsToEnable)
+            {
+                obj.SetActive(true);
+            }
         }
+
+        // Disable required objects
+        if (objectsToDisable != null)
+        {
+            foreach (GameObject obj in objectsToDisable)
+            {
+                obj.SetActive(false);
+            }
+        }
+       
+        
 
         // Reset points
         currentPoints = 0;
@@ -44,7 +60,10 @@ public abstract class LevelBase : MonoBehaviour
         GameObject car = GameObject.FindGameObjectWithTag("Player");
         if (car != null && car.activeInHierarchy)
         {
+            car.SetActive(false);
             car.transform.position = carPosRotRef.position;
+            Debug.Log(car.name + " Position updated");
+            car.SetActive(true);
         }
         else
         {
@@ -52,6 +71,22 @@ public abstract class LevelBase : MonoBehaviour
         }
     }
 
-
+    [ContextMenu("Update Car Position")]
+    public void UpdateCarPosition()
+    {
+        GameObject car = GameObject.FindGameObjectWithTag("Player");
+        if (car != null && car.activeInHierarchy)
+        {
+            car.SetActive(false);
+            car.transform.position = carPosRotRef.position;
+            Debug.Log(car.name + " Position updated");
+            car.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("Player car not found or not active in hierarchy.");
+        }
+    }
+    
 
 }

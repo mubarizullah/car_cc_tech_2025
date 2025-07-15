@@ -6,6 +6,8 @@ public class NameInputUI : MonoBehaviour
 {
     public InputField nameInputField; // Assign in inspector
     public Button submitButton;       // Assign in inspector
+    public float timeToLoadMainmenu;
+    public GameObject loadingPanel;   // Assign in inspector
 
     void Start()
     {
@@ -25,13 +27,19 @@ public class NameInputUI : MonoBehaviour
             PlayerManager.Instance.playerName = inputName;
 
             // Destroy input UI after input
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         else
         {
             Debug.LogWarning("Name cannot be empty!");
         }
 
+        loadingPanel.SetActive(true);
+        Invoke(nameof(LoadScene), timeToLoadMainmenu);
+    }
+
+    void LoadScene()
+    {
         SceneManager.LoadScene(1);
     }
 }

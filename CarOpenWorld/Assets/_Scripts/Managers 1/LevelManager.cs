@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -29,7 +30,8 @@ public class LevelManager : MonoBehaviour
                 PlayerPrefs.Save();
             }
 
-            LoadLevel(currentLevelIndex);
+            //LoadLevel(currentLevelIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else
         {
