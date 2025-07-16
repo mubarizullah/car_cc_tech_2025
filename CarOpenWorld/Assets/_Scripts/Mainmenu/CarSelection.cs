@@ -20,6 +20,7 @@ public class CarSelection : MonoBehaviour
     public Button rewardWatchButton;
     public Button backInappPanelForMoreCoins;
     public Button customizationButton;
+    public Button exitButton;
 
     [Space(5)]
     [Header("Refrences")]
@@ -53,6 +54,7 @@ public class CarSelection : MonoBehaviour
         backInappPanelForMoreCoins.onClick.AddListener(BackFromInapp);
         rewardWatchButton.onClick.AddListener(OnRewardAdWatched);
         customizationButton.onClick.AddListener(OnCustomization);
+        exitButton.onClick.AddListener(OnExit);
         SpawnCar();
     }
 
@@ -203,6 +205,9 @@ public class CarSelection : MonoBehaviour
         SpawnCar();
     }
 
-
+    void OnExit()
+    {
+        Application.Quit();
+    }
 
 }

@@ -22,6 +22,7 @@ public class UiManager : MonoBehaviour
     //public Button pauseButton;
 
     [Header("Others")]
+    public TimeHandler timeHandler;
     public LevelManager levelManager;
     public string mainMenuSceneName;
 
@@ -56,6 +57,8 @@ public class UiManager : MonoBehaviour
     void LevelComplete()
     {
         levelCompletePanel.SetActive(true);
+        timeHandler.PauseTime();
+        timeHandler.DontConsiderTimer();
     }
     void LevelFail()
     {
@@ -74,11 +77,15 @@ public class UiManager : MonoBehaviour
     }
     void GameSetting()
     {
+        timeHandler.PauseTime();
+        timeHandler.DontConsiderTimer();
         gameSettingPanel.SetActive(true);
         TimeScaleZero();
     }
     void GameSettingBack()
     {
+        timeHandler.ResumeTime();
+        timeHandler.ConsiderTimer();
         gameSettingPanel.SetActive(false);
         TimeScaleOne();
     }
