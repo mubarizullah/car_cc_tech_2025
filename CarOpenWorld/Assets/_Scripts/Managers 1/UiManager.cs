@@ -19,6 +19,8 @@ public class UiManager : MonoBehaviour
     public Button restartButton;
     public Button settingButton;
     public Button settingBackButton;
+    public Button restartPause;
+    public Button homePause;
     //public Button pauseButton;
 
     [Header("Others")]
@@ -42,6 +44,9 @@ public class UiManager : MonoBehaviour
         restartButton.onClick.AddListener(Restart);
         settingButton.onClick.AddListener(GameSetting);
         settingBackButton.onClick.AddListener(GameSettingBack);
+
+        restartButton.onClick.AddListener(Restart);
+        homePause.onClick.AddListener(Home);
         //pauseButton.onClick.AddListener(GamePause);
     }
 
@@ -96,12 +101,12 @@ public class UiManager : MonoBehaviour
         TimeScaleOne();
     }
 
-    void Restart()
+    public void Restart()
     {
+        Debug.Log("Restart called");
         levelFailPanel.SetActive(false);
-        levelManager.RestartLevel();
-        //gamePausePanel.SetActive(false);
-        TimeScaleOne();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
 
     void Home()

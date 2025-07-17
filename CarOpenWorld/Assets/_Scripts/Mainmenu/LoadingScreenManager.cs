@@ -23,9 +23,8 @@ public class LoadingScreenManager : MonoBehaviour
     {
         sceneIndex = n;
         StartCoroutine(DelayAndStartLoading(sceneIndex));
+        MusicManager.instance.DestroySelf();
     }
-
-
 
     IEnumerator DelayAndStartLoading(int sceneIndex)
     {

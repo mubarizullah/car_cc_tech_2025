@@ -53,6 +53,7 @@ public class CustomizationManager : MonoBehaviour
         if (carCustomizer != null)
         {
             carCustomizer.ApplyBodyMaterial(index);
+            SfxManager.Instance.PlaySfxSound(SfxManager.Instance.spraySound);
         }
         else
         {
@@ -64,6 +65,7 @@ public class CustomizationManager : MonoBehaviour
         if (carCustomizer != null)
         {
             carCustomizer.ApplyRimsMaterial(index);
+            SfxManager.Instance.PlaySfxSound(SfxManager.Instance.spraySound);
         }
         else
         {

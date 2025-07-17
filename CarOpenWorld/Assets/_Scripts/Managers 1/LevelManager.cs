@@ -47,7 +47,9 @@ public class LevelManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        LoadLevel(currentLevelIndex);
+        //LoadLevel(currentLevelIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
 
     private void LoadLevel(int index)

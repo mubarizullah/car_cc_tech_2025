@@ -32,6 +32,7 @@ public class CarSelection : MonoBehaviour
     public GameObject levelPanel;
     public GameObject carSelectionUI;
     public GameObject customizationnUI;
+    public CarsDataHolder carDataHolder;
 
     public int currentCarIndex = 0;
 
@@ -45,7 +46,7 @@ public class CarSelection : MonoBehaviour
 
     void Start()
     {
-        allCars = CarsDataHolder.Instance.Cars;
+        allCars = carDataHolder.Cars;
 
         leftButton.onClick.AddListener(OnLeftClick);
         rightButton.onClick.AddListener(OnRightClick);

@@ -30,6 +30,10 @@ public class CustomizationUI : MonoBehaviour
     private void OnEnable()
     {
         cameraFocus.SetFocusTarget(bodyTarget);
+        bodyColorButtons.SetActive(true);
+        rimColorButtons.SetActive(false);
+        wingColorButtons.SetActive(false);
+        hoodColorButtons.SetActive(false);
     }
 
 

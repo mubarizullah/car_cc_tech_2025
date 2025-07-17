@@ -8,15 +8,15 @@ public class CarsDataHolder : MonoBehaviour
 
     void Awake()
     {
-        // Ensure there's only one instance
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Optional: keeps it across scenes
-        }
+        //// Ensure there's only one instance
+        //if (Instance != null && Instance != this)
+        //{
+        //    Destroy(gameObject);
+        //}
+        //else
+        //{
+        //    Instance = this;
+        //    DontDestroyOnLoad(gameObject); // Optional: keeps it across scenes
+        //}
     }
 }
