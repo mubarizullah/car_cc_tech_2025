@@ -16,9 +16,13 @@ public class CustomizationUI : MonoBehaviour
     [Space(5)]
     [Header("Parts Buttons")]
     public Button tyreFocus;
+    public GameObject tyreFocusSelector;
     public Button hoodFocus;
+    public GameObject hoodFocusSelector;
     public Button bodyFocus;
+    public GameObject bodyFocusSelector;
     public Button wingFocus;
+    public GameObject wingFocusSelector;
 
     [Space(5)]
     [Header("Color Buttons Bundles")]
@@ -31,6 +35,7 @@ public class CustomizationUI : MonoBehaviour
     {
         cameraFocus.SetFocusTarget(bodyTarget);
         bodyColorButtons.SetActive(true);
+        bodyFocusSelector.SetActive(true);
         rimColorButtons.SetActive(false);
         wingColorButtons.SetActive(false);
         hoodColorButtons.SetActive(false);
@@ -50,6 +55,8 @@ public class CustomizationUI : MonoBehaviour
         cameraFocus.SetFocusTarget(tireTarget);
         DisableAllColorGroups();
         rimColorButtons.SetActive(true);
+        DisableAllSelectors();
+        tyreFocusSelector.SetActive(true);
     }
 
     public void FocusOnBody()
@@ -57,6 +64,8 @@ public class CustomizationUI : MonoBehaviour
         cameraFocus.SetFocusTarget(bodyTarget);
         DisableAllColorGroups();
         bodyColorButtons.SetActive(true);
+        DisableAllSelectors();
+        bodyFocusSelector.SetActive(true);
     }
     
     public void FocusOnWings()
@@ -64,6 +73,8 @@ public class CustomizationUI : MonoBehaviour
         cameraFocus.SetFocusTarget(wingTarget);
         DisableAllColorGroups();
         wingColorButtons.SetActive(true);
+        DisableAllSelectors();
+        wingFocusSelector.SetActive(true);
     }
     
     public void FocusOnHood()
@@ -71,6 +82,8 @@ public class CustomizationUI : MonoBehaviour
         cameraFocus.SetFocusTarget(hoodTarget);
         DisableAllColorGroups();
         hoodColorButtons.SetActive(true);
+        DisableAllSelectors();
+        hoodFocusSelector.SetActive(true);
     }
 
     void DisableAllColorGroups()
@@ -79,5 +92,13 @@ public class CustomizationUI : MonoBehaviour
         rimColorButtons.SetActive(false);
         wingColorButtons.SetActive(false);
         hoodColorButtons.SetActive(false);
+    }
+
+    void DisableAllSelectors()
+    {
+        tyreFocusSelector.SetActive(false);
+        bodyFocusSelector.SetActive(false);
+        wingFocusSelector.SetActive(false);
+        hoodFocusSelector.SetActive(false);
     }
 }
