@@ -1,10 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainmenuUi : MonoBehaviour
 {
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI totalCoins;
+    public Text nameText;
+    public Text totalCoins;
 
     private void Start()
     {

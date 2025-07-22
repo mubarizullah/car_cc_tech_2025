@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 public class CarStatsUI : MonoBehaviour
 {
-    public TMP_Text carNameText;
+    public Text carNameText;
     public Image carLogo;
-    public TMP_Text priceText;
-    public TMP_Text powerText;
-    public TMP_Text topSpeedText;
-    public TMP_Text weightText;
-    public TMP_Text brakingText;
-    public TMP_Text adsToUnlockText;
+    public Text priceText;
+    public Text powerText;
+    public Text topSpeedText;
+    public Text weightText;
+    public Text brakingText;
+    public Text adsToUnlockText;
 
     public void UpdateStats(CarData car)
     {
