@@ -11,6 +11,9 @@ public class PlayerManager : MonoBehaviour
 
     public int selectedCarIndex;
 
+    public string selectedSceneName = "NonTraffic"; // Default
+
+
     public static event Action<int> OnCoinsUpdated;
 
 
@@ -36,6 +39,10 @@ public class PlayerManager : MonoBehaviour
                 selectedCarIndex = PlayerPrefs.GetInt(PlayerPrefsKeys.SelectedCarIndex,0);
             }
 
+            if (PlayerPrefs.HasKey(PlayerPrefsKeys.SelectedScene))
+            {
+                selectedSceneName = PlayerPrefs.GetString(PlayerPrefsKeys.SelectedScene);
+            }
         }
         else
         {
@@ -72,5 +79,12 @@ public class PlayerManager : MonoBehaviour
     public void Add50Coins()
     {
         AddCoins(50);
+    }
+
+    public void SetSelectedScene(string sceneName)
+    {
+        selectedSceneName = sceneName;
+        PlayerPrefs.SetString(PlayerPrefsKeys.SelectedScene, selectedSceneName);
+        PlayerPrefs.Save();
     }
 }

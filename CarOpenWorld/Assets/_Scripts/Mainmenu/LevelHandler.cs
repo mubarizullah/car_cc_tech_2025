@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,9 +26,9 @@ public class LevelHandler : MonoBehaviour
 
     private void Start()
     {
-        noTrafficMode.onClick.AddListener(() => ModeSelected(2));  // No Traffic
-        trafficMode.onClick.AddListener(() => ModeSelected(3));    // Traffic
-        stuntMode.onClick.AddListener(() => ModeSelected(4));      // Stunts
+        noTrafficMode.onClick.AddListener(() => OnNonTrafficModeSelected(2));  // No Traffic
+        trafficMode.onClick.AddListener(() => OnTrafficModeSelected(2));    // Traffic
+        stuntMode.onClick.AddListener(() => OnStuntModeSelected(3));      // Stunts
 
         backButton.onClick.AddListener(OnBackButtonPressed);
 
@@ -35,10 +36,25 @@ public class LevelHandler : MonoBehaviour
         //mode3Lock.onClick.AddListener(() => thirdLockedMessage.SetActive(true));
     }
 
-    void ModeSelected(int modeIndex)
+    void OnNonTrafficModeSelected(int index)
+    {
+        loadingScreen.SetActive(true);
+        OnModeClicked?.Invoke(index);
+        PlayerManager.Instance.SetSelectedScene("NonTraffic"); // Set the selected scene name
+    }
+
+    void OnTrafficModeSelected(int index)
+    {
+        loadingScreen.SetActive(true);
+        OnModeClicked?.Invoke(index);
+        PlayerManager.Instance.SetSelectedScene("Traffic"); // Set the selected scene name
+    }
+
+    void OnStuntModeSelected(int modeIndex)
     {
         loadingScreen.SetActive(true);
         OnModeClicked?.Invoke(modeIndex);
+        PlayerManager.Instance.SetSelectedScene("Stunt"); // Set the selected scene name
     }
 
     void OnBackButtonPressed()

@@ -7,7 +7,7 @@ using System.Collections;
 public class LoadingScreenManager : MonoBehaviour
 {
     public Image filler;
-    public TextMeshProUGUI percentText;
+    public Text percentText;
     int sceneIndex;
 
     private void Start()
@@ -22,11 +22,11 @@ public class LoadingScreenManager : MonoBehaviour
     void SetSceneIndex(int n)
     {
         sceneIndex = n;
-        StartCoroutine(DelayAndStartLoading(sceneIndex));
+        StartCoroutine(DelayAndStartLoading());
         MusicManager.instance.DestroySelf();
     }
 
-    IEnumerator DelayAndStartLoading(int sceneIndex)
+    IEnumerator DelayAndStartLoading()
     {
         // Allow UI to render first
         yield return null;
