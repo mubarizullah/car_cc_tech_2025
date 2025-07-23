@@ -5,4 +5,5 @@ public static class PlayerPrefsKeys
     public const string NewGameCoins = "NewGameCoins";
     public const string SelectedCarIndex = "SelectedCarIndex";
     public const string SelectedScene = "SelectedScene";
+    public const string Tutorial = "Tutorial";
 }
