@@ -10,7 +10,7 @@ public class UiManager : MonoBehaviour
     ///////////////---MISSION STATEMENT---///////////////
 
     [Space(5)]
-    [Header("----MISSION STATEMENT----")]
+    [Header("--------MISSION STATEMENT--------")]
 
     [Space(1f)]
     [Header("Panel")]
@@ -24,7 +24,7 @@ public class UiManager : MonoBehaviour
 
 
     [Space(5)]
-    [Header("----LEVEL COMPLETE----")]
+    [Header("--------LEVEL COMPLETE--------")]
 
     [Space(1f)]
     [Header("Panel")]
@@ -33,13 +33,14 @@ public class UiManager : MonoBehaviour
     [Space(1f)]
     [Header("Buttons")]
     public Button nextLevelButton;
+    public Button C_Home;
 
 
 
     ///////////////---FAIL---///////////////
 
     [Space(5)]
-    [Header("----LEVEL FAIL----")]
+    [Header("--------LEVEL FAIL--------")]
 
 
     [Space(1f)]
@@ -48,14 +49,14 @@ public class UiManager : MonoBehaviour
 
     [Space(1f)]
     [Header("Buttons")]
-    public Button F_Restart;
     public Button F_Home;
+    public Button F_Restart;
 
 
     ///////////////---SETTING---///////////////
 
     [Space(5)]
-    [Header("----SETTING----")]
+    [Header("--------SETTING--------")]
 
     [Space(1f)]
     [Header("Panel")]
@@ -63,16 +64,26 @@ public class UiManager : MonoBehaviour
     [Space(1f)]
     [Header("Buttons")]
     public Button settingButton;
-    public Button settingBackButton;
-    public Button S_RestartButton;
+    public Button settingBack;
+    public Button musicOn;
+    public Button musicOff;
+    public Button steeringButtons;
+    public Image steeringCheckBox;
+    public Button leftRightButton;
+    public Image leftRightCheckBox;
+    public Button S_Restart;
     public Button S_Home;
 
 
     [Space(5)]
     [Header("Others")]
+    public GameObject musicGameobject;
     public TimeHandler timeHandler;
     public LevelManager levelManager;
     public string mainMenuSceneName;
+    public Sprite checkedOn;
+    public Sprite checkedOff;
+    public RCC_Settings rccSettings;
 
     private void Start()
     {
@@ -83,14 +94,25 @@ public class UiManager : MonoBehaviour
 
 
         //BUTTONS ASSIGNMENTS
+        //Level Complete
         nextLevelButton.onClick.AddListener(NextLevel);
-        F_Home.onClick.AddListener(Home);
-        S_RestartButton.onClick.AddListener(Restart);
-        settingButton.onClick.AddListener(GameSetting);
-        settingBackButton.onClick.AddListener(GameSettingBack);
+        C_Home.onClick.AddListener(LoadHomeScene);
 
-        S_RestartButton.onClick.AddListener(Restart);
-        S_Home.onClick.AddListener(Home);
+        //LevelFail
+
+        F_Home.onClick.AddListener(LoadHomeScene);
+        S_Restart.onClick.AddListener(ReloadScene);
+
+        //Setting
+        settingButton.onClick.AddListener(GameSetting);
+        settingBack.onClick.AddListener(GameSettingBack);
+        S_Restart.onClick.AddListener(ReloadScene);
+        S_Home.onClick.AddListener(LoadHomeScene);
+        musicOn.onClick.AddListener(()=> musicGameobject.SetActive(true));
+        musicOff.onClick.AddListener(()=> musicGameobject.SetActive(false));
+        leftRightButton.onClick.AddListener(SetSterringToSteering);
+        steeringButtons.onClick.AddListener(SetSteeringToLeftRight);
+
     }
 
     private void OnDestroy()
@@ -111,16 +133,7 @@ public class UiManager : MonoBehaviour
         Time.timeScale = 0;
         levelFailPanel.SetActive(true);
     }
-    void GamePause()
-    {
-        //gamePausePanel.SetActive(true);
-        TimeScaleZero();
-    }
-    void GameResume()
-    {
-        //gamePausePanel.SetActive(false);
-        TimeScaleOne();
-    }
+    
     void GameSetting()
     {
         timeHandler.PauseTime();
@@ -142,19 +155,34 @@ public class UiManager : MonoBehaviour
         TimeScaleOne();
     }
 
-    public void Restart()
+    public void ReloadScene()
     {
-        Debug.Log("Restart called");
+        gameSettingPanel.SetActive(false);
         levelFailPanel.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
     }
 
-    void Home()
+    void LoadHomeScene()
     {
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
+    void SetSterringToSteering()
+    {
+        steeringCheckBox.sprite = checkedOff;
+        leftRightCheckBox.sprite = checkedOn;
+        RCC_Settings.Instance.mobileController = RCC_Settings.MobileController.SteeringWheel;
+        Debug.Log("Setting Changed to steering");
+    }
+
+    void SetSteeringToLeftRight()
+    {
+        steeringCheckBox.sprite = checkedOn;
+        leftRightCheckBox.sprite = checkedOff;
+        RCC_Settings.Instance.mobileController = RCC_Settings.MobileController.TouchScreen;
+        Debug.Log("Setting Changed to TouchScreen");
+    }
 
 
 
