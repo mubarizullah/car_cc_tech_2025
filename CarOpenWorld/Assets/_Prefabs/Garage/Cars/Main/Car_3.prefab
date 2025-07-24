@@ -1245,6 +1245,7 @@ MonoBehaviour:
   - {fileID: 6055120006938007222}
   - {fileID: 3008285437519584585}
   - {fileID: 7820028158087483506}
+  wingsRenderer: {fileID: 5714521338971145517}
   bodyMaterials:
   - {fileID: 2100000, guid: 484afae399a673c4cbdde5f052aeee60, type: 2}
   - {fileID: 2100000, guid: 15a304df7196e334a846254e841eca9b, type: 2}
@@ -1253,8 +1254,13 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 20f612837f19903419609db368724a0b, type: 2}
   - {fileID: 2100000, guid: cc5b9f90f2935de48b6f24e1a1d4682b, type: 2}
   - {fileID: 2100000, guid: 87f61d081c1d5b740be4e1aa0e925124, type: 2}
+  wingsMaterials:
+  - {fileID: 2100000, guid: 12a72530ef497174cb8b11c2877ca01f, type: 2}
+  - {fileID: 2100000, guid: 54ee9a969b70089459b543d234c43e34, type: 2}
+  - {fileID: 2100000, guid: 8962eedc06286514a83fc0512f816d35, type: 2}
   bodyMaterialIndex: 0
   rimMaterialIndex: 1
+  wingsMaterialIndex: 0
   carID: Car3
 --- !u!1 &8117716603505368469
 GameObject:
@@ -1269,7 +1275,7 @@ GameObject:
   - component: {fileID: 5714521338971145517}
   - component: {fileID: 5634668312175426714}
   m_Layer: 0
-  m_Name: spoiler
+  m_Name: wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

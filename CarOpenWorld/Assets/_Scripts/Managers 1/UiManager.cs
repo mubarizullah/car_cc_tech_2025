@@ -7,22 +7,68 @@ using UnityEngine.UI;
 public class UiManager : MonoBehaviour
 {
 
-    [Header("Panels")]
-    public GameObject levelCompletePanel;
-    public GameObject levelFailPanel;
-    //public GameObject gamePausePanel;
-    public GameObject gameSettingPanel;
+    ///////////////---MISSION STATEMENT---///////////////
 
+    [Space(5)]
+    [Header("----MISSION STATEMENT----")]
+
+    [Space(1f)]
+    [Header("Panel")]
+
+    [Space(1f)]
+    [Header("Buttons")]
+
+
+
+    ///////////////---COMPLETE---///////////////
+
+
+    [Space(5)]
+    [Header("----LEVEL COMPLETE----")]
+
+    [Space(1f)]
+    [Header("Panel")]
+    public GameObject levelCompletePanel;
+
+    [Space(1f)]
     [Header("Buttons")]
     public Button nextLevelButton;
-    public Button homeButton;
-    public Button restartButton;
+
+
+
+    ///////////////---FAIL---///////////////
+
+    [Space(5)]
+    [Header("----LEVEL FAIL----")]
+
+
+    [Space(1f)]
+    [Header("Panel")]
+    public GameObject levelFailPanel;
+
+    [Space(1f)]
+    [Header("Buttons")]
+    public Button F_Restart;
+    public Button F_Home;
+
+
+    ///////////////---SETTING---///////////////
+
+    [Space(5)]
+    [Header("----SETTING----")]
+
+    [Space(1f)]
+    [Header("Panel")]
+    public GameObject gameSettingPanel;
+    [Space(1f)]
+    [Header("Buttons")]
     public Button settingButton;
     public Button settingBackButton;
-    public Button restartPause;
-    public Button homePause;
-    //public Button pauseButton;
+    public Button S_RestartButton;
+    public Button S_Home;
 
+
+    [Space(5)]
     [Header("Others")]
     public TimeHandler timeHandler;
     public LevelManager levelManager;
@@ -32,30 +78,25 @@ public class UiManager : MonoBehaviour
     {
         GameStateEvents.OnLevelComplete += LevelComplete;
         GameStateEvents.OnLevelFail += LevelFail;
-        //GameStateEvents.OnGamePaused += GamePause;
-        //GameStateEvents.OnGameResumed += GameResume;
         GameStateEvents.OnSettingOpen += GameSetting;
 
 
 
         //BUTTONS ASSIGNMENTS
         nextLevelButton.onClick.AddListener(NextLevel);
-        homeButton.onClick.AddListener(Home);
-        restartButton.onClick.AddListener(Restart);
+        F_Home.onClick.AddListener(Home);
+        S_RestartButton.onClick.AddListener(Restart);
         settingButton.onClick.AddListener(GameSetting);
         settingBackButton.onClick.AddListener(GameSettingBack);
 
-        restartButton.onClick.AddListener(Restart);
-        homePause.onClick.AddListener(Home);
-        //pauseButton.onClick.AddListener(GamePause);
+        S_RestartButton.onClick.AddListener(Restart);
+        S_Home.onClick.AddListener(Home);
     }
 
     private void OnDestroy()
     {
         GameStateEvents.OnLevelComplete -= LevelComplete;
         GameStateEvents.OnLevelFail -= LevelFail;
-        //GameStateEvents.OnGamePaused -= GamePause;
-        //GameStateEvents.OnGameResumed -= GameResume;
         GameStateEvents.OnSettingOpen -= GameSetting;
     }
 
