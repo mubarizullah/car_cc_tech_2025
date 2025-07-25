@@ -2,29 +2,40 @@ using UnityEngine;
 
 public class CarCustomizer : MonoBehaviour
 {
+    [Space(5)]
+    [Header("Renderers of Body Parts")]
     public Renderer carBodyRenderer;
     public Renderer[] rimRenderers;
+    public Renderer wingsRenderer;
 
+
+    [Space(5)]
+    [Header("Materials")]
     public Material[] bodyMaterials;
     public Material[] rimMaterials;
+    public Material[] wingsMaterials;
 
     public int bodyMaterialIndex = 0; // The slot on the car body renderer to change
     public int rimMaterialIndex = 0;  // The slot on the rim renderer to change
+    public int wingsMaterialIndex = 0;  // The slot on the wings renderer to change
 
     [Header("Unique Identifier")]
     public string carID = "Car1"; // This must be unique per car (e.g. "Car1", "Car2", etc.)
 
     private string BodyMatKey => carID + "_LastBodyMaterialIndex";
     private string RimMatKey => carID + "_LastRimMaterialIndex";
+    private string WingsMatKey => carID + "_LastWingMaterialIndex";
 
     private void Start()
     {
         // Load saved selections, fallback to index 0 if not found
         int savedBodyMaterialIndex = PlayerPrefs.GetInt(BodyMatKey, 0);
         int savedRimMaterialIndex = PlayerPrefs.GetInt(RimMatKey, 0);
+        int savedWingMaterialIndex = PlayerPrefs.GetInt(WingsMatKey, 0);
 
         ApplyBodyMaterial(savedBodyMaterialIndex);
         ApplyRimsMaterial(savedRimMaterialIndex);
+        ApplyWingsMaterial(savedWingMaterialIndex);
     }
 
     public void ApplyBodyMaterial(int materialIndex)
@@ -88,5 +99,35 @@ public class CarCustomizer : MonoBehaviour
 
         // Save selection
         PlayerPrefs.SetInt(RimMatKey, materialIndex);
+    }
+
+    public void ApplyWingsMaterial(int materialIndex)
+    {
+        if (wingsRenderer == null || wingsMaterials == null || wingsMaterials.Length == 0)
+        {
+            Debug.LogWarning("Wings renderer or Wigns materials not assigned.");
+            return;
+        }
+
+        if (materialIndex < 0 || materialIndex >= wingsMaterials.Length)
+        {
+            Debug.LogWarning($"Invalid body material index: {materialIndex}");
+            return;
+        }
+
+        Material[] mats = wingsRenderer.materials;
+
+        if (wingsMaterialIndex >= 0 && wingsMaterialIndex < mats.Length)
+        {
+            mats[wingsMaterialIndex] = wingsMaterials[materialIndex];
+            wingsRenderer.materials = mats;
+
+            // Save selection
+            PlayerPrefs.SetInt(WingsMatKey, materialIndex);
+        }
+        else
+        {
+            Debug.LogWarning($"Body material slot index {wingsMaterialIndex} is out of range.");
+        }
     }
 }

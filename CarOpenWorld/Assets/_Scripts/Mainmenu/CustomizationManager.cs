@@ -11,6 +11,7 @@ public class CustomizationManager : MonoBehaviour
     [Header("BodyColorButtons")]
     public List<Button> bodyColorButtons;
     public List<Button> rimsColorButtons;
+    public List<Button> wingsColorButtons;
 
 
     CarCustomizer carCustomizer;
@@ -35,6 +36,11 @@ public class CustomizationManager : MonoBehaviour
         {
             int index = i; // VERY important: capture correct index inside the loop
             rimsColorButtons[i].onClick.AddListener(() => OnRimColorSelected(index));
+        }
+        for (int i = 0; i < wingsColorButtons.Count; i++)
+        {
+            int index = i; // VERY important: capture correct index inside the loop
+            wingsColorButtons[i].onClick.AddListener(() => OnWingsColorSelected(index));
         }
     }
 
@@ -72,11 +78,11 @@ public class CustomizationManager : MonoBehaviour
             Debug.LogWarning("CarCustomizer not found.");
         }
     }
-    void OnPartsColorSelected(int index)
+    void OnWingsColorSelected(int index)
     {
         if (carCustomizer != null)
         {
-            carCustomizer.ApplyRimsMaterial(index);
+            carCustomizer.ApplyWingsMaterial(index);
         }
         else
         {
