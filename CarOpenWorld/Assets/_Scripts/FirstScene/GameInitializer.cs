@@ -5,7 +5,10 @@ public class GameInitializer : MonoBehaviour
 {
     public GameObject nameInputUIPrefab; // Assign your input UI prefab here
     public float timeToLoadMainmenu;
+    [SerializeField] float timeToLoadAppOpen = 3f;
+    [SerializeField] float timeToShowAppOpen = 5f;
     public GameObject loadingPanel;
+
     void Start()
     {
         // Check if player name exists
@@ -18,6 +21,12 @@ public class GameInitializer : MonoBehaviour
         {
             AlreadyHaveName();
         }
+    }
+
+    private void OnEnable()
+    {
+        Invoke(nameof(LoadAppOpen), timeToLoadAppOpen);
+        Invoke(nameof(ShowAppOpen), timeToShowAppOpen);
     }
 
     void AlreadyHaveName()
@@ -37,6 +46,21 @@ public class GameInitializer : MonoBehaviour
     void LoadScene()
     {
         SceneManager.LoadScene(1);
+    }
+
+    void LoadAppOpen()
+    {
+        if (AdmobAdsManager.Instance)
+        {
+            AdmobAdsManager.Instance.Btn_App_Load();
+        }
+    }
+    void ShowAppOpen()
+    {
+        if (AdmobAdsManager.Instance)
+        {
+            AdmobAdsManager.Instance.Btn_App_Show();
+        }
     }
 
 

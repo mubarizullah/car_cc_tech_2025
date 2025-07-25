@@ -100,6 +100,7 @@ public class CarSelection : MonoBehaviour
             playButtonVisuals.gameObject.SetActive(true);
             carPriceVisuals.SetActive(false);
             rewardWatchButton.gameObject.SetActive(false);
+            customizationButton.gameObject.SetActive(true);
         }
         else
         {
@@ -107,6 +108,7 @@ public class CarSelection : MonoBehaviour
             playButtonVisuals.gameObject.SetActive(false);
             carPriceVisuals.SetActive(true);
             rewardWatchButton.gameObject.SetActive(true);
+            customizationButton.gameObject.SetActive(false);
         }
 
         if (!car.preUnlocked && !isUnlocked)
@@ -182,6 +184,11 @@ public class CarSelection : MonoBehaviour
 
 
     void OnCustomization()
+    {
+        InterstitialAdCall.Instance.StartLoading(CustomizationPanel);
+    }
+
+    void CustomizationPanel()
     {
         carSelectionUI.SetActive(false);
         customizationnUI.SetActive(true);
