@@ -124,35 +124,45 @@ public class UiManager : MonoBehaviour
 
     void LevelComplete()
     {
+        InterstitialAdCall.Instance.StartLoading(LevelCompleteWork);
+    }
+    void LevelCompleteWork()
+    {
         levelCompletePanel.SetActive(true);
         timeHandler.PauseTime();
         timeHandler.DontConsiderTimer();
     }
+
     void LevelFail()
     {
-        Time.timeScale = 0;
+        InterstitialAdCall.Instance.StartLoading(LevelFailWork);
+    }
+
+    void LevelFailWork()
+    {
         levelFailPanel.SetActive(true);
     }
     
     void GameSetting()
     {
+        InterstitialAdCall.Instance.StartLoading(GameSettingWork);
+    }
+
+    void GameSettingWork()
+    {
         timeHandler.PauseTime();
         timeHandler.DontConsiderTimer();
         gameSettingPanel.SetActive(true);
-        TimeScaleZero();
     }
     void GameSettingBack()
     {
         timeHandler.ResumeTime();
         timeHandler.ConsiderTimer();
         gameSettingPanel.SetActive(false);
-        TimeScaleOne();
     }
     void NextLevel()
     {
-        levelCompletePanel.SetActive(false);
         levelManager.NextLevel();
-        TimeScaleOne();
     }
 
     public void ReloadScene()
@@ -186,14 +196,4 @@ public class UiManager : MonoBehaviour
 
 
 
-
-    // Helper methods to control time scale
-    void TimeScaleZero()
-    {
-        Time.timeScale = 0f;
-    }
-    void TimeScaleOne()
-    {
-        Time.timeScale = 1f;
-    }
 }

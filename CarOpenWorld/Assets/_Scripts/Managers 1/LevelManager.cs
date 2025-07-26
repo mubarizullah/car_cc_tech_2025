@@ -30,7 +30,6 @@ public class LevelManager : MonoBehaviour
                 PlayerPrefs.Save();
             }
 
-            //LoadLevel(currentLevelIndex);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else
@@ -47,7 +46,6 @@ public class LevelManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        //LoadLevel(currentLevelIndex);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
     }
@@ -57,10 +55,12 @@ public class LevelManager : MonoBehaviour
         foreach (var level in levels)
         {
             level.SetActive(false);
+            Debug.Log("Gameobject" + level.name + " is deactivated");
         }
         for (int i = 0; i < levels.Length; i++)
         {
             levels[i].SetActive(i == index);
+            Debug.Log("Gameobject" + levels[i].name + " active state is " + levels[i].activeSelf);
         }
 
         Debug.Log($"Level {index + 1} loaded.");
@@ -69,10 +69,6 @@ public class LevelManager : MonoBehaviour
     // Optional: Reset saved progress (for testing or UI button)
     public void ResetProgress()
     {
-        PlayerPrefs.DeleteKey(SaveKey);
-        currentLevelIndex = 0;
-        latestUnlockedLevel = 0;
-        LoadLevel(currentLevelIndex);
-        Debug.Log("Progress reset.");
+       
     }
 }

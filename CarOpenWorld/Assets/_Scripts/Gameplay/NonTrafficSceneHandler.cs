@@ -8,7 +8,7 @@ public class NonTrafficSceneHandler : MonoBehaviour
     public GameObject[] gObjToEnable;
     public GameObject[] gObjToDisable;
     [Space(5)]
-    [Header("At Tutorial")]
+    [Header("At Old Game")]
     public GameObject[] gObectsjToEnable;
     public GameObject[] gObjectsToDisable;
 

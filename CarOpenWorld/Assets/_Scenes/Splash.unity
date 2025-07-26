@@ -1897,6 +1897,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameInputUIPrefab: {fileID: 4509833626175799288}
   timeToLoadMainmenu: 6
+  timeToLoadAppOpen: 3
+  timeToShowAppOpen: 5
   loadingPanel: {fileID: 1661523351}
 --- !u!4 &1306214418
 Transform:
@@ -3501,12 +3503,12 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 50
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 5
     m_MaxSize: 65
     m_Alignment: 3
-    m_AlignByGeometry: 0
-    m_RichText: 0
+    m_AlignByGeometry: 1
+    m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
