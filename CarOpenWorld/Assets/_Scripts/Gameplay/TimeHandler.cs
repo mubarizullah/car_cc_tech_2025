@@ -28,7 +28,6 @@ public class TimeHandler : MonoBehaviour
 
     public static event Action OnTimerComplete;
 
-    int timerNumber;
 
     private void Awake()
     {

@@ -134,6 +134,10 @@ public class UiManager : MonoBehaviour
 
     void LevelComplete()
     {
+        if (PlayerManager.Instance)
+        {
+            PlayerManager.Instance.Add1000Coins();
+        }
         InterstitialAdCall.Instance.StartLoading(LevelCompleteWork);
     }
     void LevelCompleteWork()

@@ -66,6 +66,7 @@ public class GameStateEvents : MonoBehaviour
 
     public static void UpdateMissionState(string text)
     {
+        Debug.Log("UpdateMissionStatement");
         OnMissionStartStatement?.Invoke(text);
     }
 }

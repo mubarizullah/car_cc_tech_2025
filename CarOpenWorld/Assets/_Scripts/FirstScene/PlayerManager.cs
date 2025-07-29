@@ -76,9 +76,9 @@ public class PlayerManager : MonoBehaviour
     }
 
     [ContextMenu("Ad 50 coins")]
-    public void Add50Coins()
+    public void Add1000Coins()
     {
-        AddCoins(50);
+        AddCoins(1000);
     }
 
     public void SetSelectedScene(string sceneName)

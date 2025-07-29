@@ -16,7 +16,6 @@ public abstract class LevelBase : MonoBehaviour
     {
         StartLevel();
         GameStateEvents.UpdateProgressOnStart(currentPoints, totalPointsRequired);
-        GameStateEvents.UpdateMissionState(missionDescription);
     }
 
     public virtual void StartLevel()
@@ -32,6 +31,7 @@ public abstract class LevelBase : MonoBehaviour
 
     void AtLevelStart()
     {
+        GameStateEvents.UpdateMissionState(missionDescription);
         // Enable required objects
         if (objectsToEnable != null)
         {

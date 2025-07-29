@@ -145,6 +145,7 @@ public class CarSelection : MonoBehaviour
     void OnBuyButtonClicked()
     {
         CarData car = allCars[currentCarIndex];
+        if(PlayerManager.Instance)
         if (car.carPrice <= PlayerManager.Instance.totalCoins)
         {
             PlayerData.Instance.UnlockCar(car.CarName);
@@ -153,8 +154,8 @@ public class CarSelection : MonoBehaviour
         {
             //inapp panel for having more coins
             inappPanelForMoreCoins.SetActive(true);
-            DestroyCurrentCar();
         }
+        inappPanelForMoreCoins.SetActive(true);
     }
 
 
