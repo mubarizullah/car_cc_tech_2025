@@ -2555,7 +2555,7 @@ GameObject:
   - component: {fileID: 103894886}
   - component: {fileID: 103894888}
   m_Layer: 5
-  m_Name: BOX
+  m_Name: Btn_MusicOnCheckBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3429,8 +3429,9 @@ GameObject:
   - component: {fileID: 163469543}
   - component: {fileID: 163469545}
   - component: {fileID: 163469544}
+  - component: {fileID: 163469546}
   m_Layer: 5
-  m_Name: BOX
+  m_Name: Btn_SteeringCheckBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3493,6 +3494,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163469542}
   m_CullTransparentMesh: 1
+--- !u!114 &163469546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163469542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 163469544}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &170024816
 GameObject:
   m_ObjectHideFlags: 0
@@ -4889,7 +4934,7 @@ GameObject:
   - component: {fileID: 237879609}
   - component: {fileID: 237879611}
   m_Layer: 5
-  m_Name: BOX
+  m_Name: Btn_MusicOffCheckBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6082,7 +6127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &280095902
 Transform:
   m_ObjectHideFlags: 0
@@ -13219,7 +13264,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 8c8ee51b006c72544943983f4bb7cff3, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -17851,7 +17896,7 @@ GameObject:
   - component: {fileID: 827275049}
   - component: {fileID: 827275050}
   m_Layer: 0
-  m_Name: UI_Manager
+  m_Name: UI_Manager_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17893,21 +17938,18 @@ MonoBehaviour:
   gameSettingPanel: {fileID: 792087321}
   settingButton: {fileID: 1427126565}
   settingBack: {fileID: 88151072}
-  musicOn: {fileID: 103894888}
-  musicOff: {fileID: 237879611}
-  steeringButtons: {fileID: 642257175}
-  steeringCheckBox: {fileID: 1050039624}
-  leftRightButton: {fileID: 1232917676}
-  leftRightCheckBox: {fileID: 1050039624}
+  btn_MusicOnCheck: {fileID: 103894888}
+  btn_MusicOffCheck: {fileID: 237879611}
   S_Restart: {fileID: 1744577688}
   S_Home: {fileID: 2060013637}
+  btn_SteeringCheckBox: {fileID: 163469546}
+  btn_LeftRightCheckBox: {fileID: 1050039626}
   musicGameobject: {fileID: 1733241527}
   timeHandler: {fileID: 768647669}
   levelManager: {fileID: 1533875831}
   mainMenuSceneName: MainGarage
   checkedOn: {fileID: 21300000, guid: b4c0cd7299fcd564aa78e1069e7e88bc, type: 3}
   checkedOff: {fileID: 21300000, guid: b4b10f0bc4c364e479c0d487c06ee055, type: 3}
-  rccSettings: {fileID: 0}
 --- !u!1 &836848046
 GameObject:
   m_ObjectHideFlags: 0
@@ -22274,8 +22316,9 @@ GameObject:
   - component: {fileID: 1050039623}
   - component: {fileID: 1050039625}
   - component: {fileID: 1050039624}
+  - component: {fileID: 1050039626}
   m_Layer: 5
-  m_Name: BOX
+  m_Name: Btn_LeftRightCheckBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22338,6 +22381,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050039622}
   m_CullTransparentMesh: 1
+--- !u!114 &1050039626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050039622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1050039624}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1053328287
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -65,14 +63,14 @@ public class UiManager : MonoBehaviour
     [Header("Buttons")]
     public Button settingButton;
     public Button settingBack;
-    public Button musicOn;
-    public Button musicOff;
-    public Button steeringButtons;
-    public Image steeringCheckBox;
-    public Button leftRightButton;
-    public Image leftRightCheckBox;
+    public Button btn_MusicOnCheck;
+    public Button btn_MusicOffCheck;
     public Button S_Restart;
     public Button S_Home;
+    [Space(1f)]
+    public Button btn_SteeringCheckBox;
+    [Space(1f)]
+    public Button btn_LeftRightCheckBox;
 
 
     [Space(5)]
@@ -83,8 +81,13 @@ public class UiManager : MonoBehaviour
     public string mainMenuSceneName;
     public Sprite checkedOn;
     public Sprite checkedOff;
-    public RCC_Settings rccSettings;
 
+
+
+    Image leftRighCheckBoxImage;
+    Image steeringCheckBoxImage;
+    Image musicOffCheckBoxImage;
+    Image musicOnCheckBoxImage;
     private void Start()
     {
         GameStateEvents.OnLevelComplete += LevelComplete;
@@ -108,11 +111,18 @@ public class UiManager : MonoBehaviour
         settingBack.onClick.AddListener(GameSettingBack);
         S_Restart.onClick.AddListener(ReloadScene);
         S_Home.onClick.AddListener(LoadHomeScene);
-        musicOn.onClick.AddListener(()=> musicGameobject.SetActive(true));
-        musicOff.onClick.AddListener(()=> musicGameobject.SetActive(false));
-        leftRightButton.onClick.AddListener(SetSterringToSteering);
-        steeringButtons.onClick.AddListener(SetSteeringToLeftRight);
+        btn_MusicOnCheck.onClick.AddListener(OnMusicOn);
+        btn_MusicOffCheck.onClick.AddListener(OnMusicOff);
+        btn_LeftRightCheckBox.onClick.AddListener(SetControllerToLeftRightButton);
+        btn_SteeringCheckBox.onClick.AddListener(SetControllerToSteering);
 
+
+        leftRighCheckBoxImage = btn_LeftRightCheckBox.GetComponent<Image>();
+        steeringCheckBoxImage = btn_SteeringCheckBox.GetComponent<Image>();
+        musicOffCheckBoxImage = btn_MusicOffCheck.GetComponent<Image>();
+        musicOnCheckBoxImage = btn_MusicOnCheck.GetComponent<Image>();
+
+        CheckPrevCheckBox();
     }
 
     private void OnDestroy()
@@ -178,22 +188,93 @@ public class UiManager : MonoBehaviour
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
-    void SetSterringToSteering()
+    void SetControllerToLeftRightButton()
     {
-        steeringCheckBox.sprite = checkedOff;
-        leftRightCheckBox.sprite = checkedOn;
-        RCC_Settings.Instance.mobileController = RCC_Settings.MobileController.SteeringWheel;
+        if (leftRighCheckBoxImage && steeringCheckBoxImage)
+        {
+            leftRighCheckBoxImage.sprite = checkedOn;
+            steeringCheckBoxImage.sprite = checkedOff;
+            PlayerPrefs.SetInt(gameObject.name + "controller", 0);
+        }
+        else
+        {
+            Debug.LogError("The " + btn_LeftRightCheckBox + " or " + btn_SteeringCheckBox + " does not have image component on the same gameobject");
+        }
+        RCC_Settings.Instance.mobileController = RCC_Settings.MobileController.TouchScreen;
         Debug.Log("Setting Changed to steering");
     }
 
-    void SetSteeringToLeftRight()
+    void SetControllerToSteering()
     {
-        steeringCheckBox.sprite = checkedOn;
-        leftRightCheckBox.sprite = checkedOff;
-        RCC_Settings.Instance.mobileController = RCC_Settings.MobileController.TouchScreen;
+        if (leftRighCheckBoxImage && steeringCheckBoxImage)
+        {
+            leftRighCheckBoxImage.sprite = checkedOff;
+            steeringCheckBoxImage.sprite = checkedOn;
+            PlayerPrefs.SetInt(gameObject.name + "controller", 1);
+        }
+        else
+        {
+            Debug.LogError("The " + btn_LeftRightCheckBox + " or " + btn_SteeringCheckBox + " does not have image component on the same gameobject");
+        }
+        RCC_Settings.Instance.mobileController = RCC_Settings.MobileController.SteeringWheel;
         Debug.Log("Setting Changed to TouchScreen");
     }
 
+    void OnMusicOn()
+    {
+        if (musicOffCheckBoxImage && musicOnCheckBoxImage)
+        {
+            musicOnCheckBoxImage.sprite = checkedOn;
+            musicOffCheckBoxImage.sprite = checkedOff;
+            musicGameobject.SetActive(true);
+            PlayerPrefs.SetInt(gameObject.name + "music", 0);
+        }
+        else
+        {
+            Debug.LogError("The " + btn_MusicOffCheck + " or " + btn_MusicOnCheck + " does not have image component on the same gameobject");
+        }
+    }
 
+    void OnMusicOff()
+    {
+        if (musicOffCheckBoxImage && musicOnCheckBoxImage)
+        {
+            musicOnCheckBoxImage.sprite = checkedOff;
+            musicOffCheckBoxImage.sprite = checkedOn;
+            musicGameobject.SetActive(false);
+            PlayerPrefs.SetInt(gameObject.name + "music", 1);
+        }
+        else
+        {
+            Debug.LogError("The " + btn_MusicOffCheck + " or " + btn_MusicOnCheck + " does not have image component on the same gameobject");
+        }
+    }
+
+    void CheckPrevCheckBox()
+    {
+        if (PlayerPrefs.GetInt(gameObject.name + "music", 0) == 0)
+        {
+            musicOnCheckBoxImage.sprite = checkedOn;
+            musicOffCheckBoxImage.sprite = checkedOff;
+            musicGameobject.SetActive(true);
+        }
+        else
+        {
+            musicOnCheckBoxImage.sprite = checkedOff;
+            musicOffCheckBoxImage.sprite = checkedOn;
+            musicGameobject.SetActive(false);
+        }
+        
+        if (PlayerPrefs.GetInt(gameObject.name + "controller", 0) == 0)
+        {
+            steeringCheckBoxImage.sprite = checkedOff;
+            leftRighCheckBoxImage.sprite = checkedOn;
+        }
+        else
+        {
+            steeringCheckBoxImage.sprite = checkedOn;
+            leftRighCheckBoxImage.sprite = checkedOff;
+        }
+    }
 
 }
