@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -134,6 +135,11 @@ public class UiManager : MonoBehaviour
 
     void LevelComplete()
     {
+        StartCoroutine(CompleteCoroutine());
+    }
+    IEnumerator CompleteCoroutine()
+    {
+        yield return new WaitForSeconds(2);
         if (PlayerManager.Instance)
         {
             PlayerManager.Instance.Add1000Coins();
@@ -146,6 +152,7 @@ public class UiManager : MonoBehaviour
         timeHandler.PauseTime();
         timeHandler.DontConsiderTimer();
     }
+    
 
     void LevelFail()
     {

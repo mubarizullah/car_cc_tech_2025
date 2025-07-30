@@ -27,8 +27,8 @@ public class LevelHandler : MonoBehaviour
     private void Start()
     {
         noTrafficMode.onClick.AddListener(() => OnNonTrafficModeSelected(2));  // No Traffic
-        trafficMode.onClick.AddListener(() => OnTrafficModeSelected(2));    // Traffic
-        stuntMode.onClick.AddListener(() => OnStuntModeSelected(3));      // Stunts
+        trafficMode.onClick.AddListener(() => OnTrafficModeSelected(3));    // Traffic
+        stuntMode.onClick.AddListener(() => OnStuntModeSelected(4));      // Stunts
 
         backButton.onClick.AddListener(OnBackButtonPressed);
 

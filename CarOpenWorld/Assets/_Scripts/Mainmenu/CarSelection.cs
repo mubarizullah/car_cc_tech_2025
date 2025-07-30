@@ -133,7 +133,7 @@ public class CarSelection : MonoBehaviour
         }
         
         garagePanel.SetActive(false);
-        DestroyCurrentCar();
+        //DestroyCurrentCar();
         levelPanel.SetActive(true);
 
         // You could also log or trigger other logic here

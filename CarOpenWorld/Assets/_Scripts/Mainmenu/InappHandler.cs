@@ -30,13 +30,13 @@ public class InappHandler : MonoBehaviour
     }
     void OnUnlockCarsInappClicked()
     {
-        carSelection.DestroyCurrentCar();
+        //carSelection.DestroyCurrentCar();
         moreMoneyPanel.SetActive(false);
         unlockAllCarsPanel.SetActive(true);
     } 
     void OnMoreMoneyInappClicked()
     {
-        carSelection.DestroyCurrentCar();
+        //carSelection.DestroyCurrentCar();
         unlockAllCarsPanel.SetActive(false);
         moreMoneyPanel.SetActive(true);
     }
